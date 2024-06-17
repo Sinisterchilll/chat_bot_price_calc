@@ -26,7 +26,7 @@ export default function Home() {
             </p>
 
           </div>
-          <div className="flex flex-col lg:flex-row h-auto w-full mt-12">
+          <div className="flex flex-col lg:flex-row h-auto w-full pt-12">
             <div className="flex-1 bg-gradient-to-b from-gray-100 to-white p-4 rounded-lg">
               <div className="flex justify-between">
                 <div className='grow'>
@@ -194,7 +194,7 @@ export default function Home() {
 
             </div>
 
-            <div className="flex-1 bg-white">
+            <div className="flex-1 bg-white ">
               <Calculator
               agents={sliderValue1}
               hours={sliderValue2}

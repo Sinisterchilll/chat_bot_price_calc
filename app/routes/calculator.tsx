@@ -37,7 +37,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   const savingsHeight = (estimatedSavings / maxValue) * 100;
 
   return (
-    <div className="p-6 bg-white rounded-lg ">
+    <div className="p-10 bg-white rounded-lg flex flex-col justify-center ">
       <div className="flex items-end justify-center h-64 space-x-8">
         <div className="flex flex-col items-center">
           <div
