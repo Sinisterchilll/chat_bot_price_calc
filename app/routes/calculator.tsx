@@ -1,15 +1,22 @@
-// routes/calculator.tsx
+import React from 'react';
 
-import { useState } from 'react';
+type CalculatorProps = {
+  agents: number;
+  hours: number;
+  costPerHour: number;
+  tickets: number;
+  autoResolved: number;
+  resolutionTime: number;
+};
 
-export default function Calculator() {
-  const [agents, setAgents] = useState<number>(1);
-  const [hours, setHours] = useState<number>(160);
-  const [costPerHour, setCostPerHour] = useState<number>(15);
-  const [tickets, setTickets] = useState<number>(1000);
-  const [resolutionTime, setResolutionTime] = useState<number>(10);
-  const [autoResolved, setAutoResolved] = useState<number>(50);
-  
+const Calculator: React.FC<CalculatorProps> = ({
+  agents,
+  hours,
+  costPerHour,
+  tickets,
+  autoResolved,
+  resolutionTime,
+}) => {
   const calculateSavings = (): number => {
     const monthlyAgentCost = agents * hours * costPerHour;
     const ticketsResolvedByAI = tickets * (autoResolved / 100);
@@ -18,69 +25,39 @@ export default function Calculator() {
     return costSaved;
   };
 
+  const calculateExpenseBefore = (): number => {
+    return agents * hours * costPerHour;
+  };
+
+  const expenseBefore = calculateExpenseBefore();
+  const estimatedSavings = calculateSavings();
+
+  const maxValue = Math.max(expenseBefore, estimatedSavings);
+  const expenseHeight = (expenseBefore / maxValue) * 100;
+  const savingsHeight = (estimatedSavings / maxValue) * 100;
+
   return (
-    <div>
-      <div>
-        <label>
-          How many agents do you have? 
-          <input 
-            type="number" 
-            value={agents} 
-            onChange={(e) => setAgents(Number(e.target.value))} 
-          />
-        </label>
+    <div className="p-6 bg-white rounded-lg ">
+      <div className="flex items-end justify-center h-64 space-x-8">
+        <div className="flex flex-col items-center">
+          <div
+            className="w-16 bg-gray-200 rounded-md"
+            style={{ height: `calc(${expenseHeight}% + 50px)`, minHeight: '50px' }}
+          ></div>
+          <span className="mt-2 text-gray-800">Cost with Agents</span>
+          <span className="text-red-600 font-bold">${expenseBefore.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div
+            className="w-16 bg-blue-600 rounded-md"
+            style={{ height: `calc(${savingsHeight}% + 50px)`, minHeight: '50px' }}
+          ></div>
+          <span className="mt-2 text-gray-800">Estimated Savings</span>
+          <span className="text-green-600 font-bold">${estimatedSavings.toFixed(2)}</span>
+        </div>
       </div>
-      <div>
-        <label>
-          How many hours do they work per month?
-          <input 
-            type="number" 
-            value={hours} 
-            onChange={(e) => setHours(Number(e.target.value))} 
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          What is the cost per hour per agent?
-          <input 
-            type="number" 
-            value={costPerHour} 
-            onChange={(e) => setCostPerHour(Number(e.target.value))} 
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          How many tickets do you get each month?
-          <input 
-            type="number" 
-            value={tickets} 
-            onChange={(e) => setTickets(Number(e.target.value))} 
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Time it takes to resolve each ticket (in mins)
-          <input 
-            type="number" 
-            value={resolutionTime} 
-            onChange={(e) => setResolutionTime(Number(e.target.value))} 
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          % of tickets automatically resolved by AI
-          <input 
-            type="number" 
-            value={autoResolved} 
-            onChange={(e) => setAutoResolved(Number(e.target.value))} 
-          />
-        </label>
-      </div>
-      <h2>Estimated Savings: ${calculateSavings().toFixed(2)}</h2>
     </div>
   );
-}
+};
+
+export default Calculator;
