@@ -17,10 +17,10 @@ export default function Home() {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto text-center lg:max-w-4xl">
 
-            <p className="font-display text-4xl font-bold tracking-tight text-gray-900 mt-5 sm:text-5xl lg:text-6xl">
+            <p className="font-display text-4xl font-bold tracking-tight text-gray-900 mt-5 sm:text-8xl pt-20 pb-5 lg:text-6xl">
               Chatbot cost calculator
             </p>
-            <p className="max-w-2xl text-base font-normal text-gray-700 mx-auto mt-5 sm:text-lg lg:text-2xl">
+            <p className="max-w-2xl text-base font-normal text-gray-700 mx-auto mt-5 sm:text-3xl pt-5 pb-10 lg:text-2xl">
               Are you looking to adopt a chatbot but are unsure what it will cost?
               Dont't worry you are at the right place
             </p>
@@ -30,7 +30,7 @@ export default function Home() {
             <div className="flex-1 bg-gradient-to-b from-gray-100 to-white p-4 rounded-lg">
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">Number of Customer Service Agents:</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Number of Customer Service Agents:</label>
                   <input
                     type="range"
                     id="slider1"
@@ -58,7 +58,7 @@ export default function Home() {
 
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">Monthly working hours (per agent):</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Monthly working hours (per agent):</label>
                   <input
                     type="range"
                     id="slider2"
@@ -86,7 +86,7 @@ export default function Home() {
 
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">Salary per hour (in $ per agent):</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Salary per hour (in $ per agent):</label>
                   <input
                     type="range"
                     id="slider3"
@@ -113,7 +113,7 @@ export default function Home() {
 
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">How many Tickets do you get each month:</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">How many Tickets do you get each month:</label>
                   <input
                     type="range"
                     id="slider4"
@@ -140,7 +140,7 @@ export default function Home() {
 
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">Time it takes to resolve each Ticket (in mins):</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Time it takes to resolve each Ticket (in mins):</label>
                   <input
                     type="range"
                     id="slider5"
@@ -167,7 +167,7 @@ export default function Home() {
 
               <div className="flex justify-between">
                 <div className='grow'>
-                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-lg lg:text-xl ">Percentage of Tickets resolved by AI:</label>
+                  <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Percentage of Tickets resolved by AI:</label>
                   <input
                     type="range"
                     id="slider6"
