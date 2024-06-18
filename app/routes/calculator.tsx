@@ -17,6 +17,8 @@ const Calculator: React.FC<CalculatorProps> = ({
   autoResolved,
   resolutionTime,
 }) => {
+
+  
   const calculateSavings = (): number => {
     const monthlyAgentCost = agents * hours * costPerHour;
     const ticketsResolvedByAI = tickets * (autoResolved / 100);
@@ -33,16 +35,16 @@ const Calculator: React.FC<CalculatorProps> = ({
   const estimatedSavings = calculateSavings();
 
   const maxValue = Math.max(expenseBefore, estimatedSavings);
-  const expenseHeight = (expenseBefore / maxValue) * 100;
-  const savingsHeight = (estimatedSavings / maxValue) * 100;
+  const expenseHeight = (expenseBefore / maxValue) * 200;
+  const savingsHeight = (estimatedSavings / maxValue) * 200;
 
   return (
     <div className="p-10 bg-white rounded-lg flex flex-col justify-center ">
-      <div className="flex items-end justify-center h-64 space-x-8">
+      <div className="flex items-end justify-center h-164 space-x-8 pt-20">
         <div className="flex flex-col items-center">
           <div
             className="w-16 bg-gray-200 rounded-md"
-            style={{ height: `calc(${expenseHeight}% + 50px)`, minHeight: '50px' }}
+            style={{ height: `calc(${expenseHeight}px + 10px)` }}
           ></div>
           <span className="mt-2 text-gray-800">Cost with Agents</span>
           <span className="text-red-600 font-bold">${expenseBefore.toFixed(2)}</span>
@@ -50,7 +52,7 @@ const Calculator: React.FC<CalculatorProps> = ({
         <div className="flex flex-col items-center">
           <div
             className="w-16 bg-blue-600 rounded-md"
-            style={{ height: `calc(${savingsHeight}% + 50px)`, minHeight: '50px' }}
+            style={{ height: `calc(${savingsHeight}px + 10px)` }}
           ></div>
           <span className="mt-2 text-gray-800">Estimated Savings</span>
           <span className="text-green-600 font-bold">${estimatedSavings.toFixed(2)}</span>

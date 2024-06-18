@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
 import Calculator from './calculator';
 
+
 export default function Home() {
   // State to hold slider values
   const [sliderValue1, setSliderValue1] = useState(25);
@@ -10,6 +11,14 @@ export default function Home() {
   const [sliderValue5, setSliderValue5] = useState(25);
   const [sliderValue6, setSliderValue6] = useState(25);
 
+  const handleInputChange = (e:any, setSliderValue:any) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value)) {
+      setSliderValue(value);
+    }
+  };
+
+ 
 
   return (
     <>
@@ -31,7 +40,7 @@ export default function Home() {
               <div className="flex justify-between">
                 <div className='grow'>
                   <label htmlFor="slider1" className="block text-sm font-normal text-gray-700 sm:text-3xl lg:text-xl ">Number of Customer Service Agents:</label>
-                  <input
+                  <input 
                     type="range"
                     id="slider1"
                     name="slider1"
@@ -39,7 +48,8 @@ export default function Home() {
                     max="100"
                     value={sliderValue1}
                     onChange={(e) => setSliderValue1(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md  accent-blue-500 "
+                    
                   />
 
 
@@ -51,7 +61,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue1}</span>
+                <input
+                    type="number"
+                    value={sliderValue1}
+                    onChange={(e) => handleInputChange(e, setSliderValue1)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
@@ -67,7 +82,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue2}
                     onChange={(e) => setSliderValue2(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md accent-blue-500 "
                   />
 
 
@@ -79,7 +94,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue2}</span>
+                <input
+                    type="number"
+                    value={sliderValue2}
+                    onChange={(e) => handleInputChange(e, setSliderValue2)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
@@ -95,7 +115,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue3}
                     onChange={(e) => setSliderValue3(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md  accent-blue-500"
                   />
 
 
@@ -107,7 +127,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue3}</span>
+                <input
+                    type="number"
+                    value={sliderValue3}
+                    onChange={(e) => handleInputChange(e, setSliderValue3)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
@@ -122,7 +147,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue4}
                     onChange={(e) => setSliderValue4(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md accent-blue-500"
                   />
 
 
@@ -134,7 +159,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue4}</span>
+                <input
+                    type="number"
+                    value={sliderValue4}
+                    onChange={(e) => handleInputChange(e, setSliderValue4)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
@@ -149,7 +179,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue5}
                     onChange={(e) => setSliderValue5(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md accent-blue-500"
                   />
 
 
@@ -161,7 +191,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue5}</span>
+                <input
+                    type="number"
+                    value={sliderValue5}
+                    onChange={(e) => handleInputChange(e, setSliderValue5)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
@@ -176,7 +211,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue6}
                     onChange={(e) => setSliderValue6(parseInt(e.target.value))}
-                    className="block w-full h-3 mt-5 bg-gray-200 rounded-md overflow-hidden appearance-none"
+                    className="block w-full h-3 mt-6 bg-gray-200 rounded-md accent-blue-500"
                   />
 
 
@@ -188,7 +223,12 @@ export default function Home() {
                 </div>
 
                 <div className=" mt-11 mx-5">
-                  <span className="px-3 py-1 bg-white rounded-md border border-blue-600">{sliderValue6}</span>
+                <input
+                    type="number"
+                    value={sliderValue6}
+                    onChange={(e) => handleInputChange(e, setSliderValue6)}
+                    className=" py-1 bg-white rounded-md border border-blue-600 w-12 pl-3 "
+                  />
                 </div>
               </div>
 
