@@ -13,7 +13,7 @@ export default function Home() {
 
   const handleInputChange = (e:any, setSliderValue:any) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value)) {
+    if (!isNaN(value) || e.target.value === '') {
       setSliderValue(value);
     }
   };
