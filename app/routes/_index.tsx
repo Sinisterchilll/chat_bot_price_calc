@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Calculator from './calculator';
 
 export default function Home() {
@@ -9,11 +9,15 @@ export default function Home() {
   const [sliderValue5, setSliderValue5] = useState(25);
   const [sliderValue6, setSliderValue6] = useState(25);
 
-  const handleInputChange = (e: any, setSliderValue: any) => {
-    const value = parseInt(e.target.value);
-    if (!isNaN(value) || e.target.value === '') {
-      setSliderValue(value);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>, setSliderValue: React.Dispatch<React.SetStateAction<number>>, minValue: number, maxValue: number) => {
+    let value = parseInt(e.target.value);
+    
+    if (isNaN(value)) {
+      value = minValue; // Reset to min value if input is not a number
+    } else {
+      value = Math.min(Math.max(value, minValue), maxValue); // Clamp value within range
     }
+    setSliderValue(value);
   };
 
   const gradientBackground = (sliderValue: number) => ({
@@ -46,15 +50,18 @@ export default function Home() {
                     type="range"
                     id="slider1"
                     name="slider1"
-                    min="0"
-                    max="100"
+                    min="1"
+                    max="200"
                     value={sliderValue1}
                     onChange={(e) => setSliderValue1(parseInt(e.target.value))}
-                    style={gradientBackground(sliderValue1)}
-                    className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer appearance-none"
+                    style={{
+                      background: `linear-gradient(to right, #145DEE 0%, #145DEE ${sliderValue1/2}%, #CBD5E0 ${sliderValue1/2}%, #CBD5E0 100%)`
+                    }}
+                    className="w-full range-slider h-2 bg-gray-100 rounded-lg accent-blue-600 cursor-pointer appearance-none"
                   />
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">50</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">50</span>
                     <span className="text-sm text-gray-400 font-medium">100</span>
                     <span className="text-sm text-gray-400 font-medium">150</span>
                     <span className="text-sm text-gray-400 font-medium">200</span>
@@ -63,27 +70,30 @@ export default function Home() {
                 <input
                   type="number"
                   value={sliderValue1}
-                  onChange={(e) => handleInputChange(e, setSliderValue1)}
+                  onChange={(e) => handleInputChange(e, setSliderValue1, 1, 200)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
               <div className="flex justify-between gap-6 w-full items-center">
                 <div className="w-full">
-                  <label className="block mb-2 text-sm font-medium text-gray-700">How many hours do they work per month/week/day?</label>
+                  <label className="block mb-2 text-sm font-medium text-gray-700">How many hours do they work per month?</label>
                   <input
                     type="range"
                     id="slider2"
                     name="slider2"
                     min="0"
-                    max="100"
+                    max="200"
                     value={sliderValue2}
                     onChange={(e) => setSliderValue2(parseInt(e.target.value))}
-                    style={gradientBackground(sliderValue2)}
+                    style={{
+                      background: `linear-gradient(to right, #145DEE 0%, #145DEE ${sliderValue2/2}%, #CBD5E0 ${sliderValue2/2}%, #CBD5E0 100%)`
+                    }}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">50</span>
+                  <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">50</span>
                     <span className="text-sm text-gray-400 font-medium">100</span>
                     <span className="text-sm text-gray-400 font-medium">150</span>
                     <span className="text-sm text-gray-400 font-medium">200</span>
@@ -92,7 +102,7 @@ export default function Home() {
                 <input
                   type="number"
                   value={sliderValue2}
-                  onChange={(e) => handleInputChange(e, setSliderValue2)}
+                  onChange={(e) => handleInputChange(e, setSliderValue2, 1, 200)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
@@ -105,14 +115,17 @@ export default function Home() {
                     id="slider3"
                     name="slider3"
                     min="0"
-                    max="100"
+                    max="200"
                     value={sliderValue3}
                     onChange={(e) => setSliderValue3(parseInt(e.target.value))}
-                    style={gradientBackground(sliderValue3)}
+                    style={{
+                      background: `linear-gradient(to right, #145DEE 0%, #145DEE ${sliderValue3/2}%, #CBD5E0 ${sliderValue3/2}%, #CBD5E0 100%)`
+                    }}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">50</span>
+                  <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">50</span>
                     <span className="text-sm text-gray-400 font-medium">100</span>
                     <span className="text-sm text-gray-400 font-medium">150</span>
                     <span className="text-sm text-gray-400 font-medium">200</span>
@@ -121,7 +134,7 @@ export default function Home() {
                 <input
                   type="number"
                   value={sliderValue3}
-                  onChange={(e) => handleInputChange(e, setSliderValue3)}
+                  onChange={(e) => handleInputChange(e, setSliderValue3, 1, 200)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
@@ -134,23 +147,26 @@ export default function Home() {
                     id="slider4"
                     name="slider4"
                     min="0"
-                    max="100"
+                    max="1000"
                     value={sliderValue4}
                     onChange={(e) => setSliderValue4(parseInt(e.target.value))}
-                    style={gradientBackground(sliderValue4)}
+                    style={{
+                      background: `linear-gradient(to right, #145DEE 0%, #145DEE ${sliderValue4/10}%, #CBD5E0 ${sliderValue4/10}%, #CBD5E0 100%)`
+                    }}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">50</span>
-                    <span className="text-sm text-gray-400 font-medium">100</span>
-                    <span className="text-sm text-gray-400 font-medium">150</span>
-                    <span className="text-sm text-gray-400 font-medium">200</span>
+                  <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-3">250</span>
+                    <span className="text-sm text-gray-400 font-medium">500</span>
+                    <span className="text-sm text-gray-400 font-medium">750</span>
+                    <span className="text-sm text-gray-400 font-medium">1000</span>
                   </div>
                 </div>
                 <input
                   type="number"
                   value={sliderValue4}
-                  onChange={(e) => handleInputChange(e, setSliderValue4)}
+                  onChange={(e) => handleInputChange(e, setSliderValue4, 1, 1000)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
@@ -163,14 +179,17 @@ export default function Home() {
                     id="slider5"
                     name="slider5"
                     min="0"
-                    max="100"
+                    max="200"
                     value={sliderValue5}
                     onChange={(e) => setSliderValue5(parseInt(e.target.value))}
-                    style={gradientBackground(sliderValue5)}
+                    style={{
+                      background: `linear-gradient(to right, #145DEE 0%, #145DEE ${sliderValue5/2}%, #CBD5E0 ${sliderValue5/2}%, #CBD5E0 100%)`
+                    }}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">50</span>
+                  <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">50</span>
                     <span className="text-sm text-gray-400 font-medium">100</span>
                     <span className="text-sm text-gray-400 font-medium">150</span>
                     <span className="text-sm text-gray-400 font-medium">200</span>
@@ -179,7 +198,7 @@ export default function Home() {
                 <input
                   type="number"
                   value={sliderValue5}
-                  onChange={(e) => handleInputChange(e, setSliderValue5)}
+                  onChange={(e) => handleInputChange(e, setSliderValue5, 1, 200)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
@@ -199,16 +218,17 @@ export default function Home() {
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
+                  <span className="text-sm text-gray-400 font-medium ml-2">1</span>
+                    <span className="text-sm text-gray-400 font-medium ml-2">25</span>
                     <span className="text-sm text-gray-400 font-medium">50</span>
+                    <span className="text-sm text-gray-400 font-medium">75</span>
                     <span className="text-sm text-gray-400 font-medium">100</span>
-                    <span className="text-sm text-gray-400 font-medium">150</span>
-                    <span className="text-sm text-gray-400 font-medium">200</span>
                   </div>
                 </div>
                 <input
                   type="number"
                   value={sliderValue6}
-                  onChange={(e) => handleInputChange(e, setSliderValue6)}
+                  onChange={(e) => handleInputChange(e, setSliderValue6, 1, 100)}
                   className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
