@@ -2,12 +2,12 @@ import { ChangeEvent, useState } from 'react';
 import Calculator from './calculator';
 
 export default function Home() {
-  const [sliderValue1, setSliderValue1] = useState(25);
-  const [sliderValue2, setSliderValue2] = useState(25);
-  const [sliderValue3, setSliderValue3] = useState(25);
-  const [sliderValue4, setSliderValue4] = useState(25);
-  const [sliderValue5, setSliderValue5] = useState(25);
-  const [sliderValue6, setSliderValue6] = useState(25);
+  const [sliderValue1, setSliderValue1] = useState(10);
+  const [sliderValue2, setSliderValue2] = useState(100);
+  const [sliderValue3, setSliderValue3] = useState(20);
+  const [sliderValue4, setSliderValue4] = useState(1000);
+  const [sliderValue5, setSliderValue5] = useState(60);
+  const [sliderValue6, setSliderValue6] = useState(40);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>, setSliderValue: React.Dispatch<React.SetStateAction<number>>, minValue: number, maxValue: number) => {
     let value = parseInt(e.target.value);

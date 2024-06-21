@@ -18,9 +18,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   resolutionTime,
 }) => {
 
-  
   const calculateSavings = (): number => {
-    const monthlyAgentCost = agents * hours * costPerHour;
     const ticketsResolvedByAI = tickets * (autoResolved / 100);
     const timeSaved = ticketsResolvedByAI * (resolutionTime / 60);
     const costSaved = timeSaved * costPerHour;
@@ -31,49 +29,54 @@ const Calculator: React.FC<CalculatorProps> = ({
     return agents * hours * costPerHour;
   };
 
-  // const calculateSavings = (): number => {
-  //   const monthlyAgentCost = agents * hours * costPerHour;
-  //   const ticketsResolvedByhuman = tickets * (1 - autoResolved / 100);
-  //   const timetaken = ticketsResolvedByhuman * (resolutionTime / 60);
-  //   const costhumanwithai = (timetaken * costPerHour) / agents;
-  //   return costhumanwithai;
-  // };
-
-  // const calculateExpenseBefore = (): number => {
-  //   const totaltime = tickets * (resolutionTime/60) ;
-  //   const costhuman = (totaltime * costPerHour) / agents ; 
-  //   return costhuman
-  // };
-
   const expenseBefore = calculateExpenseBefore();
   const estimatedSavings = calculateSavings();
+  const savingsDifference =  expenseBefore - estimatedSavings ;
 
   const maxValue = Math.max(expenseBefore, estimatedSavings);
   const expenseHeight = (expenseBefore / maxValue) * 200;
   const savingsHeight = (estimatedSavings / maxValue) * 200;
 
   return (
-    <div className="p-10 bg-white rounded-lg flex flex-col justify-center ">
-      <div className="flex items-end justify-center h-164 space-x-8 pt-20">
+    <div className="p-20 bg-white rounded-lg flex flex-col items-center justify-center space-y-6">
+      <div className="flex flex-row items-end justify-center space-x-8">
         <div className="flex flex-col items-center">
           <div
             className="w-16 bg-gray-200 rounded-md"
-            style={{ height: `calc(${expenseHeight}px + 10px)` }}
+            style={{ height: `${expenseHeight}px` }}
           ></div>
-          {/* <span className="mt-2 text-gray-800">Cost with Agents</span> */}
-          <span className="text-red-600 font-bold mt-2">${expenseBefore.toFixed(2)}<span className='text-gray-400'>/month</span><p className='text-blue-600 mx-2 font-semibold'><span className='text-gray-400'>without</span> siteGPT</p></span>
+          <div className="text-center mt-2">
+            <span className="text-red-600 font-bold block">${expenseBefore.toFixed(2)}<span className='text-gray-400'>/month</span></span>
+            <p className="text-blue-600 font-semibold"><span className='text-gray-400'>without</span> siteGPT</p>
+          </div>
         </div>
-        <span className='font-bold mb-20'>or</span>
         <div className="flex flex-col items-center">
           <div
             className="w-16 bg-blue-600 rounded-md"
-            style={{ height: `calc(${savingsHeight}px + 10px)` }}
+            style={{ height: `${savingsHeight}px` }}
           ></div>
-          {/* <span className="mt-2 text-gray-800">Estimated Savings</span> */}
-          <span className="text-green-600 font-bold mt-2">${estimatedSavings.toFixed(2)}<span className='text-gray-400'>/month</span><p className='text-blue-600 mx-6 font-semibold'><span className='text-gray-400'>with</span> siteGPT</p></span>
+          <div className="text-center mt-2">
+            <span className="text-green-600 font-bold block">${estimatedSavings.toFixed(2)}<span className='text-gray-400'>/month</span></span>
+            <p className="text-blue-600 font-semibold"><span className='text-gray-400'>with</span> siteGPT</p>
+          </div>
         </div>
       </div>
+      <div className="text-center mt-6 ">
+        {savingsDifference >= 0 ? (
+          <p className="text-xl font-semibold py-10 ">
+            You will be saving {' '}
+            <span className="text-green-600">${savingsDifference.toFixed(2)}</span> per month!
+          </p>
+        ) : (
+          <p className="text-xl font-semibold py-10">
+            Your agents are not doing enough work!
+            {/* , costing you{' '} */}
+            {/* <span className="text-red-600">${Math.abs(savingsDifference).toFixed(2)}</span>. */}
+          </p>
+        )}
+      </div>
     </div>
+    
   );
 };
 
