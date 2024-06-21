@@ -16,6 +16,10 @@ export default function Home() {
     }
   };
 
+  const gradientBackground = (sliderValue: number) => ({
+    background: `linear-gradient(to right, #145dee 0%, #145dee ${sliderValue}%, #e5e7eb ${sliderValue}%, #e5e7eb 100%)`,
+  });
+
   return (
     <>
       <section className="py-12 bg-gradient-to-b from-white to-blue-50 sm:py-16 lg:py-20 xl:py-24">
@@ -46,7 +50,8 @@ export default function Home() {
                     max="100"
                     value={sliderValue1}
                     onChange={(e) => setSliderValue1(parseInt(e.target.value))}
-                    className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
+                    style={gradientBackground(sliderValue1)}
+                    className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer appearance-none"
                   />
                   <div className="w-full flex justify-between mt-2">
                     <span className="text-sm text-gray-400 font-medium">50</span>
@@ -59,7 +64,7 @@ export default function Home() {
                   type="number"
                   value={sliderValue1}
                   onChange={(e) => handleInputChange(e, setSliderValue1)}
-                  className="w-16 h-9 rounded-lg border border-blue-600 text-center"
+                  className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
@@ -74,6 +79,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue2}
                     onChange={(e) => setSliderValue2(parseInt(e.target.value))}
+                    style={gradientBackground(sliderValue2)}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
@@ -87,7 +93,7 @@ export default function Home() {
                   type="number"
                   value={sliderValue2}
                   onChange={(e) => handleInputChange(e, setSliderValue2)}
-                  className="w-16 h-9 rounded-lg border border-blue-600 text-center"
+                  className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
@@ -102,6 +108,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue3}
                     onChange={(e) => setSliderValue3(parseInt(e.target.value))}
+                    style={gradientBackground(sliderValue3)}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
@@ -115,7 +122,7 @@ export default function Home() {
                   type="number"
                   value={sliderValue3}
                   onChange={(e) => handleInputChange(e, setSliderValue3)}
-                  className="w-16 h-9 rounded-lg border border-blue-600 text-center"
+                  className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
@@ -130,6 +137,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue4}
                     onChange={(e) => setSliderValue4(parseInt(e.target.value))}
+                    style={gradientBackground(sliderValue4)}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
@@ -143,7 +151,7 @@ export default function Home() {
                   type="number"
                   value={sliderValue4}
                   onChange={(e) => handleInputChange(e, setSliderValue4)}
-                  className="w-16 h-9 rounded-lg border border-blue-600 text-center"
+                  className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
@@ -158,6 +166,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue5}
                     onChange={(e) => setSliderValue5(parseInt(e.target.value))}
+                    style={gradientBackground(sliderValue5)}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
@@ -171,7 +180,7 @@ export default function Home() {
                   type="number"
                   value={sliderValue5}
                   onChange={(e) => handleInputChange(e, setSliderValue5)}
-                  className="w-16 h-9 rounded-lg border border-blue-600 text-center"
+                  className="no-spinner w-16 h-9 rounded-lg border border-blue-600 text-center"
                 />
               </div>
 
@@ -186,6 +195,7 @@ export default function Home() {
                     max="100"
                     value={sliderValue6}
                     onChange={(e) => setSliderValue6(parseInt(e.target.value))}
+                    style={gradientBackground(sliderValue6)}
                     className="w-full range-slider h-2 bg-gray-200 rounded-lg accent-blue-600 cursor-pointer"
                   />
                   <div className="w-full flex justify-between mt-2">
