@@ -19,9 +19,9 @@ const Calculator: React.FC<CalculatorProps> = ({
 }) => {
 
   const calculateSavings = (): number => {
-    const ticketsResolvedByAI = tickets * (autoResolved / 100);
-    const timeSaved = ticketsResolvedByAI * (resolutionTime / 60);
-    const newCost = agents * hours * costPerHour -  timeSaved * costPerHour;
+    const ticketsResolvedByHumanWithAI = tickets * (1 - autoResolved / 100);
+    const timeSaved = ticketsResolvedByHumanWithAI * (resolutionTime / 60);
+    const newCost =  timeSaved * costPerHour;
     return newCost;
   };
 
