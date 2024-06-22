@@ -240,8 +240,8 @@ export default function Home() {
                 hours={sliderValue2}
                 costPerHour={sliderValue3}
                 tickets={sliderValue4}
-                autoResolved={sliderValue5}
-                resolutionTime={sliderValue6}
+                autoResolved={sliderValue6}
+                resolutionTime={sliderValue5}
               />
             </div>
           </div>
