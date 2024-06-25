@@ -53,16 +53,35 @@ const Calculator: React.FC<CalculatorProps> = ({
   const expenseAfterAI = expenseAfterData.cost;
   const savingsDifference = expenseBefore - expenseAfterAI;
 
-  const maxValue = Math.max(expenseBefore, expenseAfterAI) ;
+  const maxH = 300000;
+  const maxValue = Math.max(expenseBefore, expenseAfterAI, maxH);
+
   const expenseHeight = (expenseBefore / maxValue) * 400;
   const savingsHeight = (expenseAfterAI / maxValue) * 400;
+  const refrenceHeight = (maxH / maxValue) * 400;
 
   return (
-    <div className="pt-50 bg-white rounded-lg flex flex-col items-center justify-center space-y-6">
-      <div className="flex flex-row items-end justify-center space-x-8">
+    <div className="pt-10 bg-white rounded-lg flex flex-col items-center justify-center space-y-6">
+      <div className="flex flex-row items-end justify-center space-x-2 ">
         <div className="flex flex-col items-center">
           <div
-            className="w-16 bg-gray-200 rounded-md pt-5 static"
+            className="w-1 bg-white mb-30"
+            style={{ height: `${refrenceHeight}px` }}>
+          </div>
+          <div className="text-center mt-2">
+            <span className="text-white font-bold block">
+              /
+            </span>
+            
+            <p className="text-white font-semibold">
+              /
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div
+            className="w-16 bg-gray-200 rounded-md "
             style={{ height: `${expenseHeight}px` }}
           ></div>
           <div className="text-center mt-2">
